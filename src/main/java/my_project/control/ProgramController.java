@@ -7,6 +7,7 @@ import javax.swing.*;
 
 public class ProgramController {
 
+    public static char[] KEYWORD = "SKATIN".toCharArray();
     private GUI gui;
     private final ViewController viewController;
 
