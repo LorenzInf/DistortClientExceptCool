@@ -4,9 +4,9 @@ import my_project.view.GUI;
 
 public class Client extends KAGO_framework.model.abitur.netz.Client {
 
+    private static final char[] keyword = "SKATIN".toCharArray();
     private String name;
     private GUI gui;
-    private String lastWhisper;
 
     public Client() {
         super("localhost", 25565);
@@ -69,7 +69,6 @@ public class Client extends KAGO_framework.model.abitur.netz.Client {
                     StringBuilder sb = new StringBuilder();
                     for (int i = 2; i < m.length; i++)
                         sb.append(m[i]).append(" ");
-                    lastWhisper = m[1] + ": " + sb;
                     send("WHISPER_" + m[1] + "_" + encode(sb.toString()));
                 }
             }
@@ -88,9 +87,9 @@ public class Client extends KAGO_framework.model.abitur.netz.Client {
 
             int j = 0;
             for (char c : charMessage) {
-                if (j == ProgramController.KEYWORD.length - 1)
+                if (j == keyword.length - 1)
                     j = 0;
-                result.append((char) ((int) c + (int) ProgramController.KEYWORD[j]));
+                result.append((char) ((int) c + (int) keyword[j]));
                 j++;
             }
             return result.toString();
@@ -105,9 +104,9 @@ public class Client extends KAGO_framework.model.abitur.netz.Client {
 
             int j = 0;
             for (char c : charMessage) {
-                if (j == ProgramController.KEYWORD.length - 1)
+                if (j == keyword.length - 1)
                     j = 0;
-                result.append((char) ((int) c - (int) ProgramController.KEYWORD[j]));
+                result.append((char) ((int) c - (int) keyword[j]));
                 j++;
             }
             return result.toString();
