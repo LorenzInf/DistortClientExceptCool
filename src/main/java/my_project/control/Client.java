@@ -106,14 +106,14 @@ public class Client extends KAGO_framework.model.abitur.netz.Client {
                         if (toAppend > 25) // Wenn das Ergebnis größer als 25 ist (und wir encoden)
                             toAppend -= 25; // Loopen wir wieder rum
                     } else {
-                        if (toAppend < 0) // Wenn das Ergebnis kleiner als 25 ist (und wir decoden)
+                        if (toAppend < 0) // Wenn das Ergebnis kleiner als 0 ist (und wir decoden)
                             toAppend += 25; // Loopen wir wieder rum
                     }
 
                     toAppend += isUppercase ? 65 : 97; // Dann wieder den richtigen Wert addieren
 
                     result.append((char) toAppend); // Und appenden
-                    j++;
+                    j++; // Und zum Enden im Schlüsselwort einen weiter gehen
                 } else {
                     result.append(c); // Wenn es kein Buchstabe im Alphabet war einfach appenden
                 }
