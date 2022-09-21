@@ -82,20 +82,20 @@ public class Client extends KAGO_framework.model.abitur.netz.Client {
 
     //Normal
     private String code(String message, boolean encode) {
-        if(message != null && !message.equals("")) { //Nur encoden, wenn die Nachricht ungleich null oder nicht leer ist
+        if(message != null && !message.equals("")) { //Nur en-/decoden, wenn die Nachricht ungleich null oder nicht leer ist
 
             StringBuilder result = new StringBuilder(); //StringBuilder für das Ergebnis machen
             var charMessage = message.toCharArray(); //Die Nachricht zu einem char Array machen
 
             int j = 0;
             for (char c : charMessage) { //Für alle chars in der Nachricht
-                if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) { //Wenn der inspizierte char zwischen a - z / A - Z ist
+                if((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z')) { //Wenn der inspizierte char im Alphabet ist
                     if (j < keyword.length) //Jedes Mal, wenn wir am Ende des Schlüsselworts angekommen sind, wieder von vorne Anfangen
                         j = 0;
 
                     boolean isUppercase = Character.isUpperCase(c);
-                    // 65 abziehen, wenn er upperCase ist, 97 abziehen, wenn er lowercase ist. So ist das eben in ASCII.
-                    // Danach dann das Schlüsselwort -65 auf den Wert des Buchstaben addieren/subtrahieren, weil das immer uppercase ist
+                    // 65 abziehen, wenn er uppercase ist, 97 abziehen, wenn er lowercase ist. So ist das eben in ASCII.
+                    // Danach dann das Schlüsselwort-65 auf den Wert des Buchstaben addieren/subtrahieren (-65, weil das immer uppercase ist)
                     int toAppend;
                     if(encode)
                         toAppend = ((int) c - (isUppercase ? 65 : 97)) + ((int) keyword[j] - 65);
